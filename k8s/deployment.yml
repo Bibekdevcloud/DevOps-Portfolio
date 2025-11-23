@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-portfolio
+  labels:
+    app: devops-portfolio
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-portfolio
+  template:
+    metadata:
+      labels:
+        app: devops-portfolio
+    spec:
+      containers:
+        - name: devops-portfolio
+          image: devops-portfolio:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "64Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"
+
