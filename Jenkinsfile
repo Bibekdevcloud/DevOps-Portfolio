@@ -37,8 +37,8 @@ pipeline {
             steps {
                 sh """
                   echo "Applying Kubernetes manifests (first time or updating)"
-                  kubectl apply -f k8s/deployment.yaml || true
-                  kubectl apply -f k8s/service.yaml || true
+                  kubectl apply -f k8s/deployment.yml || true
+                  kubectl apply -f k8s/service.yml || true
 
                   echo "Updating deployment image to ${IMAGE_NAME}:${IMAGE_TAG}"
                   kubectl set image deployment/devops-portfolio \
